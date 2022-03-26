@@ -3,7 +3,9 @@
 <%= render @post %>
 <% @post.comments.each do |comment| %> 
 
-  <%= comment.body %>
+  <hr></hr>
+  <%= comment.body %> <%= l comment.created_at,format: :short %>
+    <%= link_to "Ruby Guide", "https://guides.rubyonrails.org/" %>
 <% end %>
 
 <div>

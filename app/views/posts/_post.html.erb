@@ -1,12 +1,21 @@
-<div id="<%= dom_id post %>">
-  <p>
-    <strong>Index:</strong>
-    <%= post.index %>
-  </p>
-
-  <p>
-    <strong>Body:</strong>
-    <%= post.body %>
-  </p>
-
+<div class="card" id="<%= dom_id post %>">
+  <div class="card-content">
+    <p class="title">
+      <%= post.body %>
+      </p>
+    <p class="subtitle">
+      <%=  post.index %>
+    </p>
+  </div>
+  <footer class="card-footer">
+    <p class="card-footer-item">
+      <span>
+         <%= link_to "View this post", post, class: "button is-link" %>
+    </p>
+    <p class="card-footer-item">
+      <span>
+        Share on <a href="#">Facebook</a>
+      </span>
+    </p>
+  </footer>
 </div>
