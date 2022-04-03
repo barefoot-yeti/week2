@@ -11,7 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body>  
   <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     
@@ -41,8 +41,14 @@
           <a class="button is-primary">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light">
-            Log in
+          <a class="button is-primary">
+              <% if current_user %>
+              Hi <%= current_user.email %>!
+              <br>
+              <%= button_to "logout", destroy_user_session_path, method: :delete  %>
+              <% else %>
+              Not logged in
+              <%end%>
           </a>
         </div>
       </div>
@@ -51,6 +57,15 @@
 </nav>
   <section class="section">
   <div class="container" style='max-width: 650px;'>
+
+
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
   <%= yield %>
   </div>
 </section>
