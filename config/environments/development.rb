@@ -37,9 +37,26 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.delivery_method = :letter_opener
+
+  # Amazon SES SMTP Config
+  # config.action_mailer.default_url_options = { host: 'Amazon SES' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = { 
+    address: 'email-smtp.eu-west-1.amazonaws.com', 
+    user_name: 'AKIAZS44XXMBS4PBLGXT', 
+    password: 'BAQYTpm1YUcFTOPlXRD078SoYOlpLiU2Wuuy0D2FxW+8',
+    port: '587',
+    authentication: 'login',
+    enable_starttls_auto: true
+  }
+
+
   config.action_mailer.perform_deliveries = true
   
   config.action_mailer.perform_caching = false
