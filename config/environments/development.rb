@@ -1,4 +1,3 @@
-require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -48,13 +47,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = { 
-    address: 'email-smtp.eu-west-1.amazonaws.com', 
-    user_name: #[Rails.application.credentials.ses], 
-    password: #[Rails.application.credentials.ses],
+    address: 'email-smtp.us-east-1.amazonaws.com', 
+    user_name: Rails.application.credentials.dig(:ses, :username),
+    password: Rails.application.credentials.dig(:ses, :password),
     port: '587',
     authentication: 'login',
     enable_starttls_auto: true
-  }
+  } 
 
 
   config.action_mailer.perform_deliveries = true
